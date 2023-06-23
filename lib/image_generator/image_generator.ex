@@ -10,7 +10,9 @@ defmodule ImageGenerator do
   end
 
   def perform_image_search(search_text) do
-    query = "https://www.googleapis.com/customsearch/v1?key=#{@api_key}&cx=#{@search_engine_id}&q=#{URI.encode_www_form(search_text)}&searchType=image"
+    query =
+      "https://www.googleapis.com/customsearch/v1?key=#{@api_key}&cx=#{@search_engine_id}&q=#{URI.encode_www_form(search_text)}&searchType=image"
+
     response = HttpClient.get_request(query)
     json_response = Jason.decode!(response.body)
     json_response["items"]

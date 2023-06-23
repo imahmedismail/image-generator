@@ -1,0 +1,36 @@
+<.flash_group flash={@flash} />
+<div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
+  <div class="flex flex-row">
+    <div class="flex flex-col">
+      <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900">
+        Random Image Generator
+      </p>
+      <p class="mt-4 text-base leading-7 text-zinc-600">
+        Are you ready to unlock the power of words and imagery? Our innovative code brings together the magic of GoogleAPI and the art of text input to create stunning visuals like never before.
+      </p>
+      <div class="flex">
+        <div class="w-full sm:w-auto">
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3">
+            <div class="flex">
+              <.simple_form
+                for={@form}
+                id="generator-form"
+                phx-submit="generate-image"
+              >
+                <.input field={@form[:title]} class="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-brand focus:border-brand flex-grow" type="text" label="Title" placeholder="Text like cat, dog etc" />
+                <:actions>
+                  <.button class="px-4 py-2 bg-brand text-white rounded-r-md hover:bg-brand_dark focus:outline-none focus:ring-brand_dark focus:border-brand_dark" phx-disable-with="Saving...">Generate</.button>
+                </:actions>
+              </.simple_form>
+            </div>
+            <div class="flex">
+              <img src={@image_url} />
+            </div>
+          </div>
+          <div class="mt-10 grid grid-cols-1 gap-y-4 text-sm leading-6 text-zinc-700 sm:grid-cols-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
